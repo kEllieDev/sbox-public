@@ -95,8 +95,6 @@ public partial class GameObject : IJsonConvert, IComponentLister, BytePack.ISeri
 
 	internal TaskSource Task { get; set; }
 
-	internal SceneRefGizmo SceneRefGizmo { get; set; }
-
 	/// <summary>
 	/// Create a new GameObject with the given name. Will be created enabled.
 	/// </summary>
@@ -129,12 +127,6 @@ public partial class GameObject : IJsonConvert, IComponentLister, BytePack.ISeri
 		Id = Guid.NewGuid();
 		Name = name ?? "GameObject";
 		Parent = parent;
-
-		if ( Application.IsEditor )
-		{
-			// What a fucking joke
-			SceneRefGizmo = new SceneRefGizmo( this );
-		}
 
 		// seems like this is called automaically in OnEnabled?
 		if ( enabled )
